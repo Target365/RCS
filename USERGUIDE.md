@@ -176,7 +176,7 @@ Content-Type: application/json
   ]
 }
 ```
-The payment buttons are provided in the postBackData of the suggestion, and must be provided as a string (escaped quotes). Which provider the button triggers are set to the action parameter. Two providers are supported:
+The payment buttons are provided in the postBackData of the suggestion, and must be provided as a string (escaped quotes). Which provider the button triggers are set by the action parameter. Two providers are supported:
 * StrexPayment
 * VippsPayment
 
