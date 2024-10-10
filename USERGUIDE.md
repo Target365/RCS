@@ -12,6 +12,7 @@
     * [Send a Carousel](#send-a-carousel)
     * [Send a File](#send-a-file)
     * [Send payment buttons](#send-payment-buttons)
+    * [Send a Strex Connect campaign step](#send-a-strex-connect-campaign-step)
     * [Response](#response)
     * [Response codes](#response-codes)
 * [Get messages and capabilities](#get-messages-and-capabilities)
@@ -183,6 +184,18 @@ A status request with the result of the payment will be sent to the provided web
 * paymentDetailedStatus contains a description of the status from the provider
 * paymentTransactionId is the Id used against the provider, usually the same as transctionId
 * correlationId is the id for the corresponding RCS in-message so the payment can be linked to the relevant message
+
+### Send a Strex Connect campaign step
+Strex Connect has an extensive RCS campaign editor where you can create all types of messages and link them together. With this endpoint you can send the user a step from it and get him started in the campaign.
+
+```
+GET https://test.target365.io/api/rcs-campaignstep/TestBot/TestCampaign/teststep?msisdn=%2b4712345678
+Content-Type: application/json
+```
+* TestBot - the agent
+* TestCampaign - the campaign
+* teststep - the step in the campaign
+* msisdn - the user to send the step to
 
 ### Response
 ```
