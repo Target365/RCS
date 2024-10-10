@@ -193,8 +193,52 @@ Location: https://test.target365.io/api/rcs-messages/8eb5e79d-0b3d-4e50-a4dd-7a9
 * 401	Request was unauthorized.
 
 
+### Get phone RCS capabilities
+This example retrieves RCS capabilities for a phone.
+
+#### Request
+```
+GET https://test.target365.io/api/rcs-capabilities/TestBot/+4712345678
+Content-Type: application/json
+```
+
+#### Response
+```
+200 Ok
+{
+    "operator": "Google",
+    "features": [
+        "RICHCARD_STANDALONE",
+        "ACTION_CREATE_CALENDAR_EVENT",
+        "ACTION_DIAL",
+        "ACTION_OPEN_URL",
+        "ACTION_SHARE_LOCATION",
+        "ACTION_VIEW_LOCATION",
+        "RICHCARD_CAROUSEL"
+    ],
+    "statusCode": "OK"
+}
+```
+
+#### Response codes
+* 200	Message retrieved successfully.
+* 401	Request was unauthorized.
+
+* statusCode
+  * OK - phone is reachable on the RCS network
+  * NotFound - phone was not found on the RCS network
+  * Forbidden - agent is not launched on the phone operator network
+* features - which type of messages the phone supports.
+  * ACTION_CREATE_CALENDAR_EVENT
+  * ACTION_DIAL
+  * ACTION_OPEN_URL
+  * ACTION_SHARE_LOCATION
+  * ACTION_VIEW_LOCATION
+  * RICHCARD_STANDALONE
+  * RICHCARD_CAROUSEL
+
 ### Get a sent Message
-This example retrieves a sent RCS message. When sending an RCS message the url for retrieving the message is returned in the "Location" header.
+This example retrieves a sent RCS message, typically for checking it's status. When sending an RCS message the url for retrieving the message is returned in the "Location" header.
 
 #### Request
 ```
@@ -239,14 +283,6 @@ The most interesting fields are:
   * Out - message from you to the user
   * In - message from the user to you
 * capabilityStatus
-  * OK - phone is reachable on the RCS network
-  * NotFound - phone was not found on the RCS network
-  * Forbidden - agent is not launched on the phone operator network
+  * See previous section (statusCode)
 * capabilities - which type of messages the phone supports.
-  * ACTION_CREATE_CALENDAR_EVENT
-  * ACTION_DIAL
-  * ACTION_OPEN_URL
-  * ACTION_SHARE_LOCATION
-  * ACTION_VIEW_LOCATION
-  * RICHCARD_STANDALONE
-  * RICHCARD_CAROUSEL
+  * See previous section (features)
