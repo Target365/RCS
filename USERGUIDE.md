@@ -190,6 +190,7 @@ A status request with the result of the payment will be sent to the provided web
 Location: https://test.target365.io/api/rcs-messages/8eb5e79d-0b3d-4e50-a4dd-7a939af4c4c3
 
 ```
+See details about this endpoint at [Get a sent Message](#get-a-sent-message)
 
 ### Response codes
 * 201	Out-message posted successfully. Location HTTP-header will contain resource uri.
@@ -212,6 +213,7 @@ Content-Type: application/json
 200 Ok
 {
     "operator": "Google",
+    "statusCode": "OK",
     "features": [
         "RICHCARD_STANDALONE",
         "ACTION_CREATE_CALENDAR_EVENT",
@@ -220,8 +222,7 @@ Content-Type: application/json
         "ACTION_SHARE_LOCATION",
         "ACTION_VIEW_LOCATION",
         "RICHCARD_CAROUSEL"
-    ],
-    "statusCode": "OK"
+    ]
 }
 ```
 
@@ -229,11 +230,12 @@ Content-Type: application/json
 * 200	Message retrieved successfully.
 * 401	Request was unauthorized.
 
+#### Field explanations
 * statusCode
   * OK - phone is reachable on the RCS network
   * NotFound - phone was not found on the RCS network
   * Forbidden - agent is not launched on the phone operator network
-* features - which type of messages the phone supports.
+* features - which type of actions and messages the phone supports.
   * ACTION_CREATE_CALENDAR_EVENT
   * ACTION_DIAL
   * ACTION_OPEN_URL
@@ -277,7 +279,7 @@ Content-Type: application/json
 * 401	Request was unauthorized.
 * 404	Transaction was not found.
 
-The most interesting fields are:
+#### Field explanations
 * status
   *  Queued - Message accepted by Target365
   *  Sent - Message sent to Google
