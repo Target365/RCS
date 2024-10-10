@@ -21,6 +21,7 @@
 
 ## Introduction
 The Target365 RCS REST API gives you direct access to our online RCS services for sending RCS messages, also supporting Strex and Vipps payment. You can provide webhooks for receiving messages and delivery reports from endusers.
+For an introduction to RCS you can read this document: [Best practices for using RCS](https://github.com/Target365/Docs/blob/main/Best%20practices%20for%20using%20RCS.pdf)
 
 ## Generate API key
 * Log in to your account at https://www.strexconnect.no
