@@ -6,12 +6,16 @@
 * [Setup](#setup)
     * [Authorization](#authorization)
     * [Swagger](#swagger)
-* [RCS messages](#rcs-messages)
+* [Send messages](#send-messages)
     * [Send a Text](#send-a-text)
     * [Send a Card](#send-a-card)
     * [Send a Carousel](#send-a-carousel)
     * [Send a File](#send-a-file)
     * [Send payment buttons](#send-payment-buttons)
+    * [Response](#response)
+    * [Response codes](#response-codes)
+* [Get messages and capabilities](#get-messages-and-capabilities)
+    * [Get capailites](#get-capabilities)
     * [Get a sent Message](#get-a-sent-message)
 
 ## Introduction
@@ -33,7 +37,7 @@ The Target365 RCS REST API gives you direct access to our online RCS services fo
 ### Swagger
 * Swagger for the API is located here: https://shared.target365.io/api
 
-## RCS messages
+## Send messages
 
 ### Send a Text
 This example sends a text RCS to 12345678 (+47 for Norway) from the agent "TestBot" with the text "Hello world from RCS!" and 2 buttons.
@@ -180,18 +184,19 @@ A status request with the result of the payment will be sent to the provided web
 * paymentTransactionId is the Id used against the provider, usually the same as transctionId
 * correlationId is the id for the corresponding RCS in-message so the payment can be linked to the relevant message
 
-#### Response
+### Response
 ```
 201 Created
 Location: https://test.target365.io/api/rcs-messages/8eb5e79d-0b3d-4e50-a4dd-7a939af4c4c3
 
 ```
 
-#### Response codes
+### Response codes
 * 201	Out-message posted successfully. Location HTTP-header will contain resource uri.
 * 400	Request had invalid payload.
 * 401	Request was unauthorized.
 
+## Get messages and capabilities
 
 ### Get phone RCS capabilities
 This example retrieves RCS capabilities for a phone.
