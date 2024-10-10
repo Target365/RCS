@@ -2,7 +2,8 @@
 
 ## Table of Contents
 * [Introduction](#introduction)
-* [Generate API key](#generate-api-key)
+* [Get an RCS agent](#get-an-rcs-agent)
+* [Generate an API key](#generate-an-api-key)
 * [Setup](#setup)
     * [Authorization](#authorization)
     * [Swagger](#swagger)
@@ -18,12 +19,20 @@
 * [Get messages and capabilities](#get-messages-and-capabilities)
     * [Get capailites](#get-capabilities)
     * [Get a sent Message](#get-a-sent-message)
+* [Webhook](#webhook)
+  * [Receiving message](#receiving-message)
+  * [Receiving status](#receiving-status)
 
 ## Introduction
 The Target365 RCS REST API gives you direct access to our online RCS services for sending RCS messages, also supporting Strex and Vipps payment. You can provide webhooks for receiving messages and delivery reports from endusers.
+
 For an introduction to RCS you can read this document: [Best practices for using RCS](https://github.com/Target365/Docs/blob/main/Best%20practices%20for%20using%20RCS.pdf)
 
-## Generate API key
+## Get an RCS agent
+To be able to use this API you need an RCS agent. If you do not already have this, you can use this form to get one:
+[Strex Connect RCS form](https://www.strexconnect.no/rcssetup)
+
+## Generate an API key
 * Log in to your account at https://www.strexconnect.no
 * Select "API keys" from the gear icon in the upper right corner
 * Click the button "Add API key"
@@ -307,3 +316,29 @@ Content-Type: application/json
   * See previous section (statusCode)
 * capabilities - which type of messages the phone supports.
   * See previous section (features)
+
+## Webhook
+A webhook can be added to your agent so you can receive messages from the users and status on sent messages.
+
+### Receiving message
+Messages from your users are sent in this format:
+```
+{
+  "agent": "TestBot",
+  "operator": "Google",
+	"eventType": "",
+  "msisdn": "+4712345678",
+  "text": "",
+  "suggestion": "3",
+  "transactionId": "2e303edc-974e-40ca-a1cd-23d806c3c43a"
+}
+```
+* agent - your agent
+* operator - always Google
+* eventType
+* msisdn - sender for the message
+* text - freetext entered by the user, did not click a button
+* suggestion - postBackData from a suggestion, user clicked on a button
+
+### Receiving status
+Status on your sent messages are sent in this format:
