@@ -10,10 +10,9 @@
     * [Send a Text](#send-a-text)
     * [Send a Card](#send-a-card)
     * [Send a Carousel](#send-a-carousel)
+    * [Send a File](#send-a-file)
     * [Send payment buttons](#send-payment-buttons)
-    * [Send a batch of SMS](#send-a-batch-of-sms)
-    * [Set DeliveryReport URL for an SMS](#set-deliveryreport-url-for-an-sms)
-    * [Send an SMS with payment](#send-an-sms-with-payment)
+    * [Get a sent Message](#get-a-sent-message)
 
 ## Introduction
 The Target365 RCS REST API gives you direct access to our online RCS services for sending RCS messages, also supporting Strex and Vipps payment. You can provide webhooks for receiving messages and delivery reports from endusers.
@@ -117,8 +116,8 @@ Content-Type: application/json
 }
 ```
   
-### Send a Carousel
-This example sends a carousel RCS to 12345678 (+47 for Norway) from the agent "TestBot" with 2 cards.
+### Send a File
+This example sends a file to 12345678 (+47 for Norway) from the agent "TestBot".
 
 #### Request
 ```
@@ -127,31 +126,16 @@ Content-Type: application/json
 
 {
   "agent": "TestBot",
-  "type": "Carousel",
+  "type": "File",
   "msisdn": "+4712345678",
   "contents": [
     {
-      "fileUrl": "https://target365shared.blob.core.windows.net/rcsimages-3/t365logo.png",
-      "title": "Card 1",
-      "description": "Please select an option",
-      "suggestions": [
-        { "displayText": "Option number 1", "postBackData": "1" },
-        { "displayText": "Option number 2", "postBackData": "2" }
-      ]
-    },
-    {
-      "fileUrl": "https://target365shared.blob.core.windows.net/rcsimages-3/t365logo.png",
-      "title": "Card 2",
-      "description": "Please select an option",
-      "suggestions": [
-        { "displayText": "Option number 3", "postBackData": "3" },
-        { "displayText": "Option number 4", "postBackData": "4" }
-      ]
+      "fileUrl": "https://target365shared.blob.core.windows.net/rcsimages-3/test.pdf"
     }
   ]
 }
 ```
-  
+
 ### Send payment buttons
 The RCS API is connected to the Checkout service in Strex Connect, and you can send payment buttons connected to a Checkout keyword to integrate payment into your RCS agent.
 This example sends a card RCS to 12345678 (+47 for Norway) from the agent "TestBot" with 2 payment buttons connected to a keyword by it's keywordId. You can find the Id for your keyword in the address field of your browser by clicking the keyword in the left menu in Strex Connect.
@@ -207,3 +191,62 @@ Location: https://test.target365.io/api/rcs-messages/8eb5e79d-0b3d-4e50-a4dd-7a9
 * 201	Out-message posted successfully. Location HTTP-header will contain resource uri.
 * 400	Request had invalid payload.
 * 401	Request was unauthorized.
+
+
+### Get a sent Message
+This example retrieves a sent RCS message. When sending an RCS message the url for retrieving the message is returned in the "Location" header.
+
+#### Request
+```
+GET https://test.target365.io/api/rcs-messages/2e303edc-974e-40ca-a1cd-23d806c3c43a
+Content-Type: application/json
+```
+
+#### Response
+```
+200 Ok
+{
+    "accountId": 3,
+    "transactionId": "2e303edc-974e-40ca-a1cd-23d806c3c43a",
+    "agent": "TestBot",
+    "created": "2024-10-09T12:24:34.1424252+00:00",
+    "sendTime": "2024-10-09T12:24:44.5264885+00:00",
+    "lastModified": "2024-10-09T12:24:50.0216209+00:00",
+    "status": "Displayed",
+    "direction": "Out",
+    "type": "Text",
+    "msisdn": "+4712345678",
+    "text": "Hello world from RCS!",
+    "operator": "Google",
+    "capabilityStatus": "OK",
+    "capabilities": "RICHCARD_STANDALONE,ACTION_CREATE_CALENDAR_EVENT,ACTION_DIAL,ACTION_OPEN_URL,ACTION_SHARE_LOCATION,ACTION_VIEW_LOCATION,RICHCARD_CAROUSEL"
+}
+```
+
+#### Response codes
+* 200	Message retrieved successfully.
+* 401	Request was unauthorized.
+* 404	Transaction was not found.
+
+The most interesting fields are:
+* status
+  *  Queued - Message accepted by Target365
+  *  Sent - Message sent to Google
+  *  Pending - Message sent from Google to phone
+  *  Delivered - Message was delivered to phone but not yet read by the user
+  *  Displayed - Message was displayed to the user
+* direction
+  * Out - message from you to the user
+  * In - message from the user to you
+* capabilityStatus
+  * OK - phone is reachable on the RCS network
+  * NotFound - phone was not found on the RCS network
+  * Forbidden - agent is not launched on the phone operator network
+* capabilities - which type of messages the phone supports.
+  * ACTION_CREATE_CALENDAR_EVENT
+  * ACTION_DIAL
+  * ACTION_OPEN_URL
+  * ACTION_SHARE_LOCATION
+  * ACTION_VIEW_LOCATION
+  * RICHCARD_STANDALONE
+  * RICHCARD_CAROUSEL
