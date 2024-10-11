@@ -20,8 +20,7 @@
     * [Get capailites](#get-capabilities)
     * [Get a sent Message](#get-a-sent-message)
 * [Webhook](#webhook)
-  * [Receiving message](#receiving-message)
-  * [Receiving status](#receiving-status)
+  * [Receiving webhook](#receiving-webhook)
 
 ## Introduction
 The Target365 RCS REST API gives you direct access to our online RCS services for sending RCS messages, also supporting Strex and Vipps payment. You can provide webhooks for receiving messages and delivery reports from endusers.
@@ -318,27 +317,45 @@ Content-Type: application/json
   * See previous section (features)
 
 ## Webhook
-A webhook can be added to your agent so you can receive messages from the users and status on sent messages.
+A webhook can be added to your agent so you can receive messages from the users and status on sent messages. Please note that this will override any campaigns set up on the agent in Strex Connect.
 
-### Receiving message
-Messages from your users are sent in this format:
+Go to the [Strex Connect Agent Setup](https://www.strexconnect.no/rcsagents) and add your webhook url.
+
+
+### Receiving webhooks
+Possible properties in a weebhook:
+* agent - your agent
+* operator - always Google
+* eventType - type of webhook event
+  * DELIVERED - message sent to the user is confirmed delivered to the phone
+  * READ - received after DELIVERED when the user has opened the message and displayed it on the phone
+  * MESSAGE - message from the user to your agent, can be freetext or "postBackData" from a suggestion
+  * POSITION - the user has sent a position to your agent
+* msisdn - user's phone number
+* text - freetext entered by the user
+* suggestion - postBackData from a suggestion (user clicked on a button)
+* transactionId - Id of the message in our system, retreive with [Get a sent Message](#get-a-sent-message)
+
+Example webhook received after message was delivered to the phone:
 ```
 {
   "agent": "TestBot",
   "operator": "Google",
-	"eventType": "",
+  "eventType": "READ",
+  "msisdn": "+4712345678",
+  "transactionId": "2e303edc-974e-40ca-a1cd-23d806c3c43a"
+}
+```
+
+Example webhook received after user selected a suggestion (button):
+```
+{
+  "agent": "TestBot",
+  "operator": "Google",
+  "eventType": "MESSAGE",
   "msisdn": "+4712345678",
   "text": "",
   "suggestion": "3",
   "transactionId": "2e303edc-974e-40ca-a1cd-23d806c3c43a"
 }
 ```
-* agent - your agent
-* operator - always Google
-* eventType
-* msisdn - sender for the message
-* text - freetext entered by the user, did not click a button
-* suggestion - postBackData from a suggestion, user clicked on a button
-
-### Receiving status
-Status on your sent messages are sent in this format:
