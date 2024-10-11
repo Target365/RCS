@@ -337,7 +337,7 @@ Possible properties in a weebhook:
 * msisdn - user's phone number
 * text - freetext entered by the user
 * suggestion - postBackData from a suggestion (user clicked on a button)
-* transactionId - Id of the message in our system, retreive with [Get a sent Message](#get-a-sent-message)
+* transactionId - Id of the message in our system, retrieve it with [Get a sent Message](#get-a-sent-message)
 
 Example webhook received after message was delivered to the phone:
 ```
