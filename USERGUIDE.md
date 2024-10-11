@@ -17,7 +17,7 @@
     * [Response](#response)
     * [Response codes](#response-codes)
 * [Get messages and capabilities](#get-messages-and-capabilities)
-    * [Get capailites](#get-capabilities)
+    * [Get phone RCS capabilities](#get-phone-rcs-capabilities)
     * [Get a sent Message](#get-a-sent-message)
 * [Webhook](#webhook)
   * [Receiving webhook](#receiving-webhook)
@@ -266,8 +266,12 @@ Content-Type: application/json
   * RICHCARD_STANDALONE
   * RICHCARD_CAROUSEL
 
-### Get a sent Message
-This example retrieves a sent RCS message, typically for checking it's status. When sending an RCS message the url for retrieving the message is returned in the "Location" header.
+### Get a Message
+Retrieve a sent or incoming RCS message.
+
+When sending an RCS message the url for retrieving the message is returned in the "Location" header.
+
+This example retrieves a sent RCS message, typically for checking it's status. The status can also be [received via webhooks](#receiving-webhook)
 
 #### Request
 ```
