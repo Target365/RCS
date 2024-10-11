@@ -18,7 +18,7 @@
     * [Response codes](#response-codes)
 * [Get messages and capabilities](#get-messages-and-capabilities)
     * [Get phone RCS capabilities](#get-phone-rcs-capabilities)
-    * [Get a sent Message](#get-a-sent-message)
+    * [Get a Message](#get-a-message)
 * [Webhook](#webhook)
   * [Receiving webhooks](#receiving-webhooks)
 
@@ -271,7 +271,7 @@ Retrieve a sent or incoming RCS message.
 
 When sending an RCS message the url for retrieving the message is returned in the "Location" header.
 
-This example retrieves a sent RCS message, typically for checking it's status. The status can also be [received via webhooks](#receiving-webhook)
+This example retrieves a sent RCS message, typically for checking it's status. The status can also be [received via webhooks](#receiving-webhooks)
 
 #### Request
 ```
