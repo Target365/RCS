@@ -20,7 +20,7 @@
     * [Get phone RCS capabilities](#get-phone-rcs-capabilities)
     * [Get a sent Message](#get-a-sent-message)
 * [Webhook](#webhook)
-  * [Receiving webhook](#receiving-webhook)
+  * [Receiving webhooks](#receiving-webhooks)
 
 ## Introduction
 The Target365 RCS REST API gives you direct access to our online RCS services for sending RCS messages, also supporting Strex and Vipps payment. You can provide webhooks for receiving messages and delivery reports from endusers.
@@ -324,7 +324,6 @@ Content-Type: application/json
 A webhook can be added to your agent so you can receive messages from the users and status on sent messages. Please note that this will override any campaigns set up on the agent in Strex Connect.
 
 Go to the [Strex Connect Agent Setup](https://www.strexconnect.no/rcsagents) and add your webhook url.
-
 
 ### Receiving webhooks
 Possible properties in a weebhook:
