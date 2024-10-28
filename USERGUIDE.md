@@ -208,10 +208,6 @@ Content-Type: application/json
   "msisdn": "+4712345678"
 }
 ```
-* TestBot - the agent
-* TestCampaign - the campaign
-* teststep - the step in the campaign
-* msisdn - the user to send the step to
 
 ### Response
 ```
