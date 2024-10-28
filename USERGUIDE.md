@@ -198,8 +198,15 @@ A status request with the result of the payment will be sent to the provided web
 Strex Connect has an extensive RCS campaign editor where you can create all types of messages and link them together. With this endpoint you can send the user a step from it and get him started in the campaign.
 
 ```
-GET https://test.target365.io/api/rcs-campaignstep/TestBot/TestCampaign/teststep?msisdn=%2b4712345678
+POST https://test.target365.io/api/rcs-messages/campaignstep
 Content-Type: application/json
+
+{
+  "agent": "TestBot",
+  "campaign": "TestCampaign",
+  "step": "teststep",
+  "msisdn": "+4712345678"
+}
 ```
 * TestBot - the agent
 * TestCampaign - the campaign
