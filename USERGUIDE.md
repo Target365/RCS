@@ -212,7 +212,6 @@ Content-Type: application/json
 ### Response
 ```
 201 Created
-Location: https://test.target365.io/api/rcs-messages/8eb5e79d-0b3d-4e50-a4dd-7a939af4c4c3
 
 ```
 See details about this endpoint at [Get a sent Message](#get-a-sent-message)
