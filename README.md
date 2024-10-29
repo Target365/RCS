@@ -44,9 +44,6 @@ To be able to use this API you need an RCS agent. If you do not already have thi
 ### Authorization
 * Add a header called "X-ApiKey" with the key from above to your requests.
 
-### Swagger
-* Swagger for the API is located here: https://shared.target365.io/api
-
 ## Send messages
 
 ### Send a Text
