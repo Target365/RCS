@@ -208,12 +208,13 @@ Content-Type: application/json
 ```
 
 ### Response
+The response to all message requests, except the last one, is this:
 ```
 201 Created
 Location: https://test.target365.io/api/rcs-messages/8eb5e79d-0b3d-4e50-a4dd-7a939af4c4c3
 
 ```
-The locaction header will contain an url to created message. See details about this endpoint at [Get a Message](#get-a-message)
+The locaction header will contain an url to created message. See details about this endpoint at [Get a Message](#get-a-message). This is not returned for the "Send a Strex Connect campaign step" request.
 
 ### Response codes
 * 201	Out-message posted successfully. Location HTTP-header will contain resource uri.
