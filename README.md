@@ -6,7 +6,6 @@
 * [Generate an API key](#generate-an-api-key)
 * [Setup](#setup)
     * [Authorization](#authorization)
-    * [Swagger](#swagger)
 * [Send messages](#send-messages)
     * [Send a Text](#send-a-text)
     * [Send a Card](#send-a-card)
@@ -65,6 +64,8 @@ Content-Type: application/json
   ],
 }
 ```
+[Response](#response)
+
 Suggestions are the button definitions and "postBackData" will be sent as an incoming message when the user presses the button, which will be forwarded as a [Webhook](#webhook) that you can act on.
 
 ### Send a Card
@@ -92,7 +93,8 @@ Content-Type: application/json
   ]
 }
 ```
-  
+[Response](#response)
+
 ### Send a Carousel
 This example sends a carousel RCS to 12345678 (+47 for Norway) from the agent "TestBot" with 2 cards.
 
@@ -127,7 +129,8 @@ Content-Type: application/json
   ]
 }
 ```
-  
+[Response](#response)
+
 ### Send a File
 This example sends a file to 12345678 (+47 for Norway) from the agent "TestBot".
 
@@ -147,6 +150,7 @@ Content-Type: application/json
   ]
 }
 ```
+[Response](#response)
 
 ### Send payment buttons
 The RCS API is connected to the Checkout service in Strex Connect, and you can send payment buttons connected to a Checkout keyword to integrate payment into your RCS agent.
@@ -172,6 +176,8 @@ Content-Type: application/json
   ]
 }
 ```
+[Response](#response)
+
 The payment buttons are provided in the postBackData of the suggestion, and must be provided as a string (escaped quotes). Which provider the button triggers are set by the action parameter. Two providers are supported:
 * StrexPayment
 * VippsPayment
@@ -206,15 +212,16 @@ Content-Type: application/json
   "msisdn": "+4712345678"
 }
 ```
+[Response](#response)
 
 ### Response
-The response to all message requests, except the last one, is this:
+The response to all message requests is this:
 ```
 201 Created
 Location: https://test.target365.io/api/rcs-messages/8eb5e79d-0b3d-4e50-a4dd-7a939af4c4c3
 
 ```
-The locaction header will contain an url to the created message. See details about this endpoint at [Get a Message](#get-a-message). This is not returned for the "Send a Strex Connect campaign step" request.
+The locaction header will contain an url to the created message. See details about this endpoint at [Get a Message](#get-a-message).
 
 ### Response codes
 * 201	Out-message posted successfully. Location HTTP-header will contain resource uri.
