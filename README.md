@@ -65,7 +65,7 @@ Content-Type: application/json
   ],
 }
 ```
-Suggestions are the button definitions and "postBackData" will be sent as an incoming message when the user presses the button, which will be forwarded as a [Webhook](#webhook).
+Suggestions are the button definitions and "postBackData" will be sent as an incoming message when the user presses the button, which will be forwarded as a [Webhook](#webhook) that you can act on.
 
 ### Send a Card
 This example sends a card RCS to 12345678 (+47 for Norway) from the agent "TestBot" with an image, a title, description and 2 buttons.
