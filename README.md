@@ -65,7 +65,8 @@ Content-Type: application/json
   ],
 }
 ```
-  
+Suggestions are the button definitions and "postBackData" will be sent as an incoming message when the user presses the button, which will be forwarded as a [Webhook](#webhook).
+
 ### Send a Card
 This example sends a card RCS to 12345678 (+47 for Norway) from the agent "TestBot" with an image, a title, description and 2 buttons.
 
@@ -209,9 +210,10 @@ Content-Type: application/json
 ### Response
 ```
 201 Created
+Location: https://test.target365.io/api/rcs-messages/8eb5e79d-0b3d-4e50-a4dd-7a939af4c4c3
 
 ```
-See details about this endpoint at [Get a sent Message](#get-a-sent-message)
+The locaction header will contain an url to created message. See details about this endpoint at [Get a Message](#get-a-message)
 
 ### Response codes
 * 201	Out-message posted successfully. Location HTTP-header will contain resource uri.
@@ -336,7 +338,7 @@ Possible properties in a weebhook:
 * msisdn - user's phone number
 * text - freetext entered by the user
 * suggestion - postBackData from a suggestion (user clicked on a button)
-* transactionId - Id of the message in our system, retrieve it with [Get a sent Message](#get-a-sent-message)
+* transactionId - Id of the message in our system, retrieve it with [Get a Message](#get-a-message)
 
 Example webhook received after message was delivered to the phone:
 ```
