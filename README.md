@@ -276,7 +276,7 @@ Content-Type: application/json
   * RICHCARD_CAROUSEL
 
 ### Get a Message
-Retrieve a sent or incoming RCS message.
+Retrieve a sent or incoming RCS message by TransactionId.
 
 When sending an RCS message the url for retrieving the message is returned in the "Location" header.
 
