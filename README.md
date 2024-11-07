@@ -348,6 +348,9 @@ Possible properties in a weebhook:
 * suggestion - postBackData from a suggestion (user clicked on a button)
 * transactionId - Id of the message in our system, retrieve it with [Get a Message](#get-a-message)
 
+Note that you can include as much data you want in "postBackData" for a suggestion to be able to identify which button was pressed and what actions to perform.
+See [Send payment buttons](#send-payment-buttons) for an example of how to include a complete json object in the postBackData.
+
 Example webhook received after message was delivered to the phone:
 ```
 {
