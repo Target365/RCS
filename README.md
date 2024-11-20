@@ -214,6 +214,24 @@ Content-Type: application/json
 ```
 [Response](#response)
 
+#### Campaign step with fallback SMS
+If you want to reach users that does not have an RCS enabled phone, like iPhones, you can include a fallback SMS with an URL to our RCS emulator so they can access your campaign as well.
+
+```
+POST https://test.target365.io/api/rcs-messages/campaignstep
+Content-Type: application/json
+
+{
+  "agent": "TestBot",
+  "campaign": "TestCampaign",
+  "step": "teststep",
+  "msisdn": "+4712345678",
+  "smsFallbackText": "Hei, telefonen din støtter ikke RCS, men du kan åpne kampanjen her: #rcsurl",
+  "smsFallbackSender": "TESTSTEP"
+}
+```
+[Response](#response)
+
 ### Response
 The response to all message requests is this:
 ```
@@ -222,6 +240,7 @@ Location: https://test.target365.io/api/rcs-messages/8eb5e79d-0b3d-4e50-a4dd-7a9
 
 ```
 The locaction header will contain an url to the created message. See details about this endpoint at [Get a Message](#get-a-message).
+The last part is the TransactionId, and if you want, you can specify your own TransactionId ("transactionId") in all message requests, so you can GET the message without checking the location header.
 
 ### Response codes
 * 201	Out-message posted successfully. Location HTTP-header will contain resource uri.
