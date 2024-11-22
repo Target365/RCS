@@ -154,7 +154,14 @@ Content-Type: application/json
 
 ### Send payment buttons
 The RCS API is connected to the Checkout service in Strex Connect, and you can send payment buttons connected to a Checkout keyword to integrate payment into your RCS agent.
-This example sends a card RCS to 12345678 (+47 for Norway) from the agent "TestBot" with 2 payment buttons connected to a keyword by it's keywordId. You can find the Id for your keyword in the address field of your browser by clicking the keyword in the left menu in Strex Connect.
+This example sends a card RCS to 12345678 (+47 for Norway) from the agent "TestBot" with 2 payment buttons connected to a keyword by it's keywordId. 
+
+You can find the Id for your keyword in the address field of your browser by clicking the keyword in the left menu in Strex Connect.
+
+![image](https://github.com/user-attachments/assets/f374515f-7cd9-4f94-8f38-8efe52571a6f)
+
+![image](https://github.com/user-attachments/assets/d2b0a2c5-dbe6-4fb8-b425-bb61b34cfb80)
+
 
 #### Request
 ```
