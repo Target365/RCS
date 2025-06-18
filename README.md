@@ -152,6 +152,33 @@ Content-Type: application/json
 ```
 [Response](#response)
 
+### Send action buttons
+This example sends a card with 3 action buttons - URL, Call and Calendar Event.
+
+#### Request
+```
+POST https://test.target365.io/api/rcs-messages
+Content-Type: application/json
+
+{
+  "agent": "TestBot",
+  "type": "Card",
+  "msisdn": "+4712345678",
+  "contents": [
+    {
+      "title": "Some action buttons",
+      "description": "Try them out.",
+      "suggestions": [
+        { "displayText": "Go to Target365", "postBackData": "1", "url" : "https://www.target365.no" },
+        { "displayText": "Call us", "postBackData": "2", "phone" : "+47987654321" },
+        { "displayText": "Add meeting", "postBackData": "3", "calendarEvent" : { "startTime" : "2025-06-19T08:00:00+02:00", "endTime" : "2025-06-19T09:00:00+02:00", "title" : "Meet us" , "description" : "Some agenda" } }
+      ]
+    }
+  ]
+}
+```
+[Response](#response)
+
 ### Send payment buttons
 The RCS API is connected to the Checkout service in Strex Connect, and you can send payment buttons connected to a Checkout keyword to integrate payment into your RCS agent.
 This example sends a card RCS to 12345678 (+47 for Norway) from the agent "TestBot" with 2 payment buttons connected to a keyword by it's keywordId. 
