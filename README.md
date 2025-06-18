@@ -11,8 +11,8 @@
     * [Send a Card](#send-a-card)
     * [Send a Carousel](#send-a-carousel)
     * [Send a File](#send-a-file)
-    * [Send action buttons](#send-action-buttons)
-    * [Send payment buttons](#send-payment-buttons)
+    * [Send Action Buttons](#send-action-buttons)
+    * [Send Payment Buttons](#send-payment-buttons)
     * [Send a Strex Connect campaign step](#send-a-strex-connect-campaign-step)
     * [Response](#response)
     * [Response codes](#response-codes)
@@ -153,7 +153,7 @@ Content-Type: application/json
 ```
 [Response](#response)
 
-### Send action buttons
+### Send Action Buttons
 This example sends a card with 3 action buttons - URL, Call and Calendar Event.
 
 #### Request
@@ -180,7 +180,7 @@ Content-Type: application/json
 ```
 [Response](#response)
 
-### Send payment buttons
+### Send Payment Buttons
 The RCS API is connected to the Checkout service in Strex Connect, and you can send payment buttons connected to a Checkout keyword to integrate payment into your RCS agent.
 This example sends a card RCS to 12345678 (+47 for Norway) from the agent "TestBot" with 2 payment buttons connected to a keyword by it's keywordId. 
 
