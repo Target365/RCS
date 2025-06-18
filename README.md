@@ -11,6 +11,7 @@
     * [Send a Card](#send-a-card)
     * [Send a Carousel](#send-a-carousel)
     * [Send a File](#send-a-file)
+    * [Send action buttons](#send-action-buttons)
     * [Send payment buttons](#send-payment-buttons)
     * [Send a Strex Connect campaign step](#send-a-strex-connect-campaign-step)
     * [Response](#response)
