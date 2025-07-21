@@ -156,6 +156,12 @@ Content-Type: application/json
 ### Send Action Buttons
 This example sends a card with 3 action buttons - URL, Call and Calendar Event.
 
+When sending URL buttons you can also specify "browserType":
+* InternalFull - open inside actual chat in internal browser - full height.
+* InternalTall - open inside actual chat in internal browser - 3/4 height.
+* InternalHalf - open inside actual chat in internal browser - 1/2 height.
+* External - open in external browser (Chrome, Edge ++)
+
 #### Request
 ```
 POST https://test.target365.io/api/rcs-messages
@@ -170,7 +176,7 @@ Content-Type: application/json
       "title": "Some action buttons",
       "description": "Try them out.",
       "suggestions": [
-        { "displayText": "Go to Target365", "postBackData": "1", "url" : "https://www.target365.no" },
+        { "displayText": "Go to Target365", "postBackData": "1", "url" : "https://www.target365.no", "browserType" : "InternalHalf" },
         { "displayText": "Call us", "postBackData": "2", "phone" : "+47987654321" },
         { "displayText": "Add meeting", "postBackData": "3", "calendarEvent" : { "startTime" : "2025-06-19T08:00:00+02:00", "endTime" : "2025-06-19T09:00:00+02:00", "title" : "Meet us" , "description" : "Some agenda" } }
       ]
